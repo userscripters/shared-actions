@@ -23,7 +23,7 @@ jobs:
                   NODE_AUTH_TOKEN: ${{github.token}}
                   NODE_ENV: production
             - name: Compile
-              run: npm run build
+              run: npm run build-all || npm run build
             - name: Run tests
               run: npm run test
 
