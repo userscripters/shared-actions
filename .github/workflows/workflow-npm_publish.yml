@@ -43,7 +43,7 @@ jobs:
               env:
                   NODE_AUTH_TOKEN: ${{github.token}}
                   NODE_ENV: production
-            - run: npm publish
+            - run: npm publish --dry-run
               env:
                   NODE_AUTH_TOKEN: ${{secrets.PAT}}
 
@@ -63,6 +63,7 @@ jobs:
             - run: |
                   npm config set @${{github.repository_owner}}:registry https://registry.npmjs.org
                   npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
-                  npm publish --access public
+                  npm publish --dry-run
+                  #npm publish --access public
               env:
                   NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
