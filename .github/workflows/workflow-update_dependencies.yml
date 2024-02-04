@@ -22,13 +22,8 @@ jobs:
               env:
                   NODE_AUTH_TOKEN: ${{github.token}}
                   NODE_ENV: production # combined with --production ensures no patches are attempted in CI
-            - name: Temporary - update generate-readme to v3
-              run: npx npm-check-updates @userscripters/generate-readme -u
             - name: Update to the latest minor/patch version
-              run: |
-                  npx npm-check-updates -u --target minor
-                  npm run readme --if-present
-                  git add README.md
+              run: npx npm-check-updates -u --target minor
             - name: Install updated dependencies & update lockfile
               run: |
                   npm install
