@@ -29,7 +29,9 @@ jobs:
                   npm install
                   npm update
             - name: Make sure everything's ok
-              run: npm test
+              run: |
+                  npm run build-all || npm run build
+                  npm test
             - name: Push changes to GitHub
               run: |
                   git config --global user.name "github-actions"
