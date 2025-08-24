@@ -3,6 +3,11 @@ name: Publish a package
 on:
   workflow_call:
 
+permissions:
+  contents: read
+  id-token: write
+  packages: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
